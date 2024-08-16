@@ -279,8 +279,8 @@ namespace eclipse::Hacks::Level {
             m_ignoreDamage = player->m_ignoreDamage;
             m_enable22Changes = player->m_enable22Changes;
 
-            m_xPosition = player->getPositionX();
-            m_yPosition = player->getPositionY();
+            m_xPosition = player->m_position.x;
+            m_yPosition = player->m_position.y;
             m_rotation = player->getRotation();
 
 #ifndef GEODE_IS_ANDROID
@@ -542,8 +542,7 @@ namespace eclipse::Hacks::Level {
             player->m_ignoreDamage = m_ignoreDamage;
             player->m_enable22Changes = m_enable22Changes;
 
-            player->setPositionX(m_xPosition);
-            player->setPositionY(m_yPosition);
+            player->m_position = ccp(m_xPosition, m_yPosition);
             player->setRotation(m_rotation);
 
 #ifndef GEODE_IS_ANDROID
