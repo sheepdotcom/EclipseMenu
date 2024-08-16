@@ -37,6 +37,15 @@ namespace eclipse::hacks::Bypass {
             return LevelInfoLayer::init(level, challenge);
         }
 
+        void updateLabelValues() {
+            m_fields->password = this->m_level->m_password;
+            
+            if (config::get<bool>("bypass.copybypass", false))
+                this->m_level->m_password = 1;
+
+            LevelInfoLayer::updateLabelValues();
+        }
+
         void onBack(cocos2d::CCObject* sender) {
             this->m_level->m_password = m_fields->password;
 
