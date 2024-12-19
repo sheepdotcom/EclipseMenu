@@ -26,17 +26,18 @@ namespace eclipse::hacks::Bypass {
         };
 
         bool init(GJGameLevel* level, bool challenge) {
-            m_fields->password = level->m_password;
-
-            if (config::get<bool>("bypass.copybypass", false))
-                level->m_password = 1;
+            // m_fields->password = level->m_password;
+            //
+            // if (config::get<bool>("bypass.copybypass", false))
+            //     level->m_password = 1;
 
             return LevelInfoLayer::init(level, challenge);
         }
 
         void setupLevelInfo() {
             geode::log::debug("level {} fields {}", m_level->m_password.value(), m_fields->password);
-            m_fields->password = m_level->m_password;
+            if (m_fields->password != 1)
+                m_fields->password = m_level->m_password;
 
             if (config::get<bool>("bypass.copybypass", false))
                 m_level->m_password = 1;
