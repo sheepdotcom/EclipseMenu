@@ -36,8 +36,7 @@ namespace eclipse::hacks::Bypass {
 
         void setupLevelInfo() {
             geode::log::debug("level {} fields {}", m_level->m_password.value(), m_fields->password);
-            if (m_fields->password != 1)
-                m_fields->password = m_level->m_password;
+            m_fields->password = m_level->m_password;
 
             if (config::get<bool>("bypass.copybypass", false))
                 m_level->m_password = 1;
